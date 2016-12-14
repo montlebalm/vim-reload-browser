@@ -9,22 +9,19 @@ let g:loaded_reload_browser = 1
 
 function! g:ReloadBrowser()
 
+  " Path to the plugin directory
+  let s:plugin_path = expand('<sfile>:p:h')
+
   " Google Chrome
-  let reload_chrome = get(g:, 'reload_browser_chrome', 0)
-  if reload_chrome == 1
-    " silent! :!osascript .bin/reload-chrome.applescript
-    :Dispatch! osascript ../.bin/reload-chrome.applescript
+  let s:reload_chrome = get(g:, 'reload_browser_chrome', 0)
+  if s:reload_chrome == 1
+    :call system('osascript ' . s:plugin_path . '/.bin/reload-chrome.applescript &')
   endif
 
   " Safari
-  let reload_safari = get(g:, 'reload_browser_safari', 0)
-  if reload_safari == 1
-    :Dispatch! osascript ../.bin/reload-safari.applescript
-  endif
-
-  " Safari Technology Preview
-  if get(g:, 'reload_browser_safari_tech_preview', 0)
-    :Dispatch! osascript ../.bin/reload-safari.applescript
+  let s:reload_safari = get(g:, 'reload_browser_safari', 0)
+  if s:reload_safari == 1
+    :call system('osascript ' . s:plugin_path . '/.bin/reload-safari.applescript &')
   endif
 
 endfunction
