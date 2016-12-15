@@ -8,19 +8,19 @@ endif
 let g:loaded_reload_browser = 1
 
 let s:plugin_dir = expand('<sfile>:p:h:h')
+let s:chrome_path = s:plugin_dir . '/.bin/reload-chrome.applescript'
+let s:safari_path = s:plugin_dir . '/.bin/reload-safari.applescript'
 
 function! g:ReloadBrowser()
 
   " Google Chrome
-  let s:reload_chrome = get(g:, 'reload_browser_chrome', 0)
-  if s:reload_chrome == 1
-    :call system('osascript '.s:plugin_dir.'.bin/reload-chrome.applescript &')
+  if get(g:, 'reload_browser_chrome') == 1
+    :call system('osascript '.s:chrome_path.' &')
   endif
 
   " Safari
-  let s:reload_safari = get(g:, 'reload_browser_safari', 0)
-  if s:reload_safari == 1
-    :call system('osascript '.s:plugin_dir.'.bin/reload-safari.applescript &')
+  if get(g:, 'reload_browser_safari') == 1
+    :call system('osascript '.s:safari_path.' &')
   endif
 
 endfunction
