@@ -1,0 +1,36 @@
+*reload-browser.txt*  Plugin for reloading your web browser from Vim
+
+Author: Chris Montrois <https://chrismontrois.net>
+License: Same terms as Vim itself (see |license|)
+
+This plugin is only available if 'compatible' is not set.
+
+INTRODUCTION                                    *reload-browser*
+
+This plugin is designed to help you stay focused on your editor while updating
+web code. Tools like LiveReload can do this automatically, but they require
+setup on each project.
+
+MAPPINGS                                        *reload-browser-mappings*
+
+No mappings are defined by default. Define the sequence of your choosing and
+execute the `ReloadBrowser()` function exposed by this plugin.
+
+>
+  nnoremap <silent> <leader>rs :call ReloadBrowser()<CR>
+<
+
+CUSTOMIZING                                     *reload-browser-customizing*
+
+No browsers are targeted by default. You'll need to specify which of the
+supported applications are reloaded.
+
+Currently only Safari and Google Chrome are supported. The possible options
+are:
+
+>
+  let g:reload_browser_chrome = 1
+  let g:reload_browser_safari = 1
+<
+
+ vim:tw=78:ts=8:ft=help:norl:
